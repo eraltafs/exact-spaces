@@ -1,11 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<html>
+  <head>
+    <style>
+      /* Styling for the form */
+      form {
+        width: 50%;
+        margin: auto;
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      button {
+        width: 40%;
+        margin: auto;
+      }
+      h2 {
+        text-align: center;
+      }
+
+      /* Styling for the JSON display container */
+      #jsonContainer {
+        width: 50%;
+        margin: auto;
+        margin-top: 10px;
+        display: none;
+        border: 1px solid black;
+        padding: 10px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <!-- Form for JSON submission -->
+    <form id="jsonForm">
+      <textarea
+        id="jsonInput"
+        rows="5"
+        cols="50"
+        placeholder="Enter JSON here"
+      ></textarea>
+      <button type="submit">Submit JSON</button>
+    </form>
+
+    <!-- Header for result section -->
+    <h2>Result will be shown here</h2>
+
+    <!-- Container for displaying JSON response -->
+    <div class="json-container" id="jsonContainer">
+      <!-- JSON content will be inserted here -->
+    </div>
+
+  
+  </body>
 </html>
