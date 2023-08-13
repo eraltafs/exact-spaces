@@ -67,29 +67,33 @@
     <!-- JavaScript code for form submission and JSON display -->
     <script>
       const jsonForm = document.getElementById("jsonForm");
-      const jsonInput = document.getElementById("jsonInput");
       const jsonContainer = document.getElementById("jsonContainer");
 
       jsonForm.addEventListener("submit", async (event) => {
         event.preventDefault();
-        try {
-          // Parse the user-submitted JSON
-          const submittedJson = JSON.parse(jsonInput.value);
+        const jsonInput = document.getElementById("jsonInput");
+        if (jsonInput.value == "") {
+          alert("please provide the JSON");
+        } else {
+          try {
+            // Parse the user-submitted JSON
+            const submittedJson = JSON.parse(jsonInput.value);
 
-          // Make a POST request to submit JSON
-          const response = await fetch("/submit", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(submittedJson),
-          });
+            // Make a POST request to submit JSON
+            const response = await fetch("/submit", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(submittedJson),
+            });
 
-          // Parse the JSON response and display it
-          const jsonResponse = await response.json();
-          appendResponse(jsonResponse);
-        } catch (error) {
-          alert("Invalid JSON format");
+            // Parse the JSON response and display it
+            const jsonResponse = await response.json();
+            appendResponse(jsonResponse);
+          } catch (error) {
+            alert("Invalid JSON format");
+          }
         }
       });
 
@@ -116,7 +120,7 @@
 
           keyValueElement.append(keyElement, valueElement);
 
-        //  Appending result to container to show in DOM
+          //  Appending result to container to show in DOM
           jsonContainer.appendChild(keyValueElement);
         }
       };
