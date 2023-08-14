@@ -1,0 +1,18 @@
+# Change to the specific directory where the log files are located
+cd /c/ProgramData/NVIDIA
+
+# Find all files with the extension ".log"
+find . -name "*.log"
+
+# Find all files with the extension ".log" and display detailed size information
+find . -name "*.log" -exec ls -lh {} \;
+
+# Find all files with the extension ".log", sort them in descending order by size, and show only the largest one
+find . -name "*.log" -exec du -h {} + | sort -rh | head -n 1
+
+# Truncate the log file named "NvContainerWatchdog.log" to display the first 100 lines
+head -n 100 ./NvContainerWatchdog.log
+
+# Save the first 100 lines of the log file "NvContainerWatchdog.log" to a new file named "truncated_log.txt"
+head -n 100 ./NvContainerWatchdog.log > truncated_log.txt
+
